@@ -2,6 +2,23 @@
 
 This project explores the data on Uber rides in different months and visualizes the patterns and trends in the data.
 
+# Libraries 
+ 
+```r
+library(tidyverse)
+library(ggplot2)
+library(reshape2)
+library(tidyr)
+library(dplyr)
+library(lubridate)
+library(readxl)
+library(tidytext)
+library(leaflet)
+library(ggthemes)
+library(shiny)
+```
+
+
 # Data Dictionary 
 
 The main data frame 'final_df' includes the following columns: 
@@ -44,6 +61,10 @@ final_df$day <- strftime(final_df$date, "%d")
 final_df$weekday <- as.integer(format(final_df$date, "%u")) 
 
 ```
+
+# Created the pivot table to complete the Analysis 
+
+
 
 
 # ShinyApp Link 
