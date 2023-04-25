@@ -64,10 +64,41 @@ final_df$weekday <- as.integer(format(final_df$date, "%u"))
 
 ```
 
-# Created the pivot table to complete the Analysis 
+
+# Create a pivot table to count trips by hour
+```r
+trips_by_hour <- final_df %>%
+  group_by(hour) %>%
+  summarise(trips = n()) %>%
+  pivot_longer(cols = trips, names_to = "hour_type", values_to = "trip_count")
+```
 
 
+# Create a pivot table to count trips by hour and month
+```r
+trips_by_hour_month <- final_df %>%
+  group_by(month, hour) %>%
+  summarise(trips = n()) %>%
+  ungroup()
+  ```
+  
 
+ # Create a pivot table to count trips by month and base
+   ```r
+trips_by_hour_base <- final_df %>%
+group_by(month, Base) %>%
+summarise(trips = n()) 
+ 
+```
+ 
+
+# Create a pivot table to count trips EVERY day
+  ```r
+trips_everyday <- final_df %>%
+  group_by(day, month) %>%
+  summarise(trips = n())  
+```  
+  
 
 # ShinyApp Link 
 
