@@ -111,6 +111,42 @@ day_hour <- final_df %>%
   group_by(day, hour) %>% 
   summarize(trips = n())
 ``` 
+#Leaflet map 
+
+Identified the locations with the highest number of trips and counts the number of trips taken to each location, which I used for Geo Spatial leaflet application shiny app.
+```r
+leaflet_data <- final_df %>%
+  group_by(Lat, Lon) %>%
+  summarise(trips = n())
+
+top_locations <- leaflet_data[order(-leaflet_data$trips), ] %>%
+  head(n=100)
+```
+
+# Shiny App 
+
+```r 
+  titlePanel(title = "Uber Data"),
+  
+  tabPanel( "trips by hour", 
+               div(style = "text-align: center;", 
+               h1("Trips by hour"),
+               p(""), 
+               plotOutput('plot01', height = "675px") , 
+               )
+  )
+  
+  server <- function(input, output)  
+  trips_by_hour_chart <- ggplot(trips_by_hour, aes(x = hour, y = trip_count)) +
+      geom_bar(stat = "identity", color = "black", fill = "pink") +
+      labs(title = "Trips by Hour",
+           x = "hour",
+           y = "Trip Count") 
+          output$plot01 = renderPlot({trips_by_hour_chart})
+```
+
+
+
 # ShinyApp Link 
 
 
