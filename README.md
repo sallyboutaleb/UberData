@@ -1,8 +1,9 @@
 # Uber Data Analysis
 
+![uberdatapic](https://user-images.githubusercontent.com/118493723/234388524-54b06df0-b973-4bb2-81c3-24291b087194.png)
+
 This project explores the data on Uber rides in different months and visualizes the patterns and trends in the data.
 
-![Unknown](https://user-images.githubusercontent.com/118493723/234380395-257e9a81-40c7-4d18-973c-f1a309b9dc3a.png)
 
 # Libraries 
  
@@ -65,7 +66,8 @@ final_df$weekday <- as.integer(format(final_df$date, "%u"))
 ```
 
 
-# Create a pivot table to count trips by hour
+### Create a pivot table to count trips by hour
+I created a pivot table to count the number of trips by hour. It first groups the data by hour and then uses the summarise function to count the number of trips for each hour. Finally, it pivots the table using the pivot_longer function to make it easier to work with. 
 ```r
 trips_by_hour <- final_df %>%
   group_by(hour) %>%
@@ -74,16 +76,17 @@ trips_by_hour <- final_df %>%
 ```
 
 
-# Create a pivot table to count trips by hour and month
+### Create a pivot table to count trips by hour and month
+I created a pivot table to count the number of trips by hour and month. It first groups the data by both month and hour, then uses the summarise function to count the number of trips for each combination of month and hour. 
 ```r
 trips_by_hour_month <- final_df %>%
   group_by(month, hour) %>%
-  summarise(trips = n()) %>%
-  ungroup()
+  summarise(trips = n())
   ```
   
+### Create a pivot table to count trips by month and base
 
- # Create a pivot table to count trips by month and base
+ I created a pivot table to count the number of trips by month and base. It first groups the data by both month and base, then uses the summarise function to count the number of trips for each combination of month and base. 
    ```r
 trips_by_hour_base <- final_df %>%
 group_by(month, Base) %>%
@@ -92,14 +95,22 @@ summarise(trips = n())
 ```
  
 
-# Create a pivot table to count trips EVERY day
+### Create a pivot table to count trips EVERY day
+I created a pivot table to count the number of trips every day. It first groups the data by both day and month, then uses the summarise function to count the number of trips for each combination of day and month.
+
   ```r
 trips_everyday <- final_df %>%
   group_by(day, month) %>%
   summarise(trips = n())  
 ```  
-  
-
+ 
+ ### Heat Maps
+ pivot table to visualize patterns in the number of trips over different days and hours using to display a by hour and day. The same logic for the rest of the heat maps. 
+```r
+day_hour <- final_df %>% 
+  group_by(day, hour) %>% 
+  summarize(trips = n())
+``` 
 # ShinyApp Link 
 
 
