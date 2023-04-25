@@ -20,8 +20,7 @@ weekday: day of the week of the uber rides
 
 The script reads in six different CSV files containing data on Uber rides in different months and combines them into one data frame using rbind(). It then separates the Date.Time column into separate Date and Time columns and converts the Time column to a format that only shows hour and minute. It also creates a new column for the month, day, and weekday by using the functions format() and as.integer(). 
 
-
-''' df1<- read.csv("uber-raw-data-apr14.csv")
+df1<- read.csv("uber-raw-data-apr14.csv")
 df2<- read.csv("uber-raw-data-may14.csv")
 df3<- read.csv("uber-raw-data-jun14.csv")
 df4<- read.csv("uber-raw-data-jul14.csv")
@@ -29,7 +28,6 @@ df5<- read.csv("uber-raw-data-aug14.csv")
 df6<- read.csv("uber-raw-data-sep14.csv")
 
 combined_df <- rbind(df1, df2, df3, df4, df5, df6)
-
 final_df <- separate(combined_df, Date.Time , into = c("Date", "Time"), sep = " ")
 
 # change the time format to hour and minute
@@ -38,7 +36,7 @@ final_df$hour <- format(as.POSIXct(final_df$Time, format = "%H:%M"), format = "%
 
 # Create a new column for month only for analysis
 final_df$month <- format(as.Date(final_df$Date, "%m/%d/%Y"), "%B")
-# Create a new column for day 
+# Create a new column for day and weekday for analysis
 final_df$date <- strptime(as.character(final_df$Date), "%m/%d/%Y")
 final_df$day <- strftime(final_df$date, "%d")
-final_df$weekday <- as.integer(format(final_df$date, "%u")) ''' 
+final_df$weekday <- as.integer(format(final_df$date, "%u")) 
