@@ -5,7 +5,8 @@ This project explores the data on Uber rides in different months and visualizes 
 # Data Dictionary 
 
 The main data frame 'final_df' includes the following columns: 
-
+ 
+ '''r
 Date: Date of the uber rides 
 Time: time of the uber rides 
 Lat: Latitude of the uber rides 
@@ -15,7 +16,7 @@ hour: time of the uber rides hour only (%H)
 month: The date of the uber rides expressed in month (non numerical)
 da:y The day of the month of the uber rides 
 weekday: day of the week of the uber rides 
-
+'''
 # Data Preparation 
 
 The script reads in six different CSV files containing data on Uber rides in different months and combines them into one data frame using rbind(). It then separates the Date.Time column into separate Date and Time columns and converts the Time column to a format that only shows hour and minute. It also creates a new column for the month, day, and weekday by using the functions format() and as.integer(). 
