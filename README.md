@@ -41,4 +41,4 @@ final_df$month <- format(as.Date(final_df$Date, "%m/%d/%Y"), "%B")
 # Create a new column for day 
 final_df$date <- strptime(as.character(final_df$Date), "%m/%d/%Y")
 final_df$day <- strftime(final_df$date, "%d")
-final_df$weekday <- as.integer(format(final_df$date, "%u")) '''
+final_df$weekday <- as.integer(format(final_df$date, "%u")) ''' 
