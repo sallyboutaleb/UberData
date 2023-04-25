@@ -2,6 +2,8 @@
 
 This project explores the data on Uber rides in different months and visualizes the patterns and trends in the data.
 
+![Unknown](https://user-images.githubusercontent.com/118493723/234380395-257e9a81-40c7-4d18-973c-f1a309b9dc3a.png)
+
 # Libraries 
  
 ```r
